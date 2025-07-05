@@ -1,0 +1,105 @@
+QUICK‑START GUIDE — SAM UEI, ENTITY ROLES, AND SYSTEM ACCOUNT
+(last updated June 27, 2025)
+
+--------------------------------------------------------------------
+1.  OBTAIN A UNIQUE ENTITY ID (UEI)
+--------------------------------------------------------------------
+• Sign in at SAM.gov with any Login.gov username and password.
+• Top banner: choose  "Get Started"  then  "Register Entity"  then
+  "Start Registration".
+• Complete the wizard:
+    – Legal Business Name (must match IRS records exactly)
+    – Taxpayer ID Number / EIN (sole proprietors may use SSN)
+    – Physical & mailing address
+    – At least one NAICS code and (optionally) PSC codes
+    – EFT banking information (routing and account numbers)
+• Submit the form.  A UEI is issued immediately on the confirmation
+  screen.  If you do not already have a CAGE code, Defense Logistics
+  Agency assigns one automatically in three to five business days.
+• The person who submits the registration is automatically granted
+  the “Entity Administrator” role for that UEI.
+
+--------------------------------------------------------------------
+2.  CONFIRM WHETHER A SAM LOGIN IS LINKED TO A UEI
+--------------------------------------------------------------------
+• Sign in and click the “Workspace” icon (small grid ▦).
+• Open  My Roles.
+    – If a table titled  “Entity Roles”  appears, you are linked;
+      each row shows the UEI, entity name, and your role.
+    – If the page reads  “You do not have any entity roles”,
+      the login is NOT yet linked to any UEI.
+
+--------------------------------------------------------------------
+3.  LINK A USER ACCOUNT TO THE UEI
+--------------------------------------------------------------------
+A) Administrator invitation  (fastest)
+   1. Entity Administrator:  Workspace ➜ Entity Management ➜ (UEI)
+      ➜ User Management ➜ Invite User.
+   2. Enter coworker’s Login.gov e‑mail address.
+   3. Choose role  “Viewer”  (read‑only) or  “Data Entry”.
+   4. Click  Send Invite.  Coworker clicks the e‑mail link or accepts
+      under  Workspace ➜ Pending Entity Invites.
+
+B) Self‑request  (fallback if admin is unavailable)
+   1. User searches  Search ➜ Entities  for the company UEI.
+   2. Click  Request Entity Role  and select  Viewer  or  Data Entry.
+   3. An Entity Administrator receives a task to approve or deny.
+
+RESULT:  As soon as ANY entity role appears under  My Roles,
+         the personal API key’s quota jumps from 10 calls/day
+         to 1,000 calls/day.
+
+--------------------------------------------------------------------
+4.  ROLES AND THE 1,000‑CALL PERSONAL API QUOTA
+--------------------------------------------------------------------
+• Viewer ............  read‑only, 1,000 calls/day
+• Data Entry ........  can edit non‑cert sections, 1,000 calls/day
+• Entity Administrator  full control, 1,000 calls/day
+• No entity role ....  personal key limited to 10 calls/day
+
+A Viewer role is sufficient for harvesting notice data and IVL rosters.
+
+--------------------------------------------------------------------
+5.  APPLY FOR A  SYSTEM ACCOUNT  (NON‑FEDERAL)
+--------------------------------------------------------------------
+Purpose: returns IVL contact e‑mail/phone and provides a single
+shared credential for your application.  Daily quota is 1,000
+calls/day; higher tiers require a federal sponsor.
+
+Step‑by‑step:
+ 1. Workspace ➜ System Accounts ➜ New Account.
+ 2. Tab  “System Info”
+      – System Account Name
+      – Interfacing System Name / Version
+      – Two‑sentence business justification
+ 3. Tab  “Organization”
+      – Select your UEI
+      – Add an  “Other System Account Holder”  (backup user)
+ 4. Tab  “Permissions”
+      – Tick  Contract Opportunities  ►  Public Read
+        (Non‑federal accounts cannot request FOUO data)
+ 5. Tab  “Security”
+      – List every outbound PUBLIC IP address or CIDR block
+      – Connection type:  REST API
+      – Server physical location
+      – Security POC name & e‑mail
+ 6. Tab  “Authorization”  (optional for non‑federal) — upload any
+      internal security docs if required by your org; otherwise skip.
+ 7. Review ➜ Submit ➜ accept Terms of Use.  An e‑mail one‑time code
+      confirms your identity.
+ 8. Status flows  Draft ➜ Pending Review ➜ Published.
+      Typical turnaround: 1–3 weeks.
+ 9. When status shows  Published, open the account and click
+      “Generate API Key”.  Set the system‑account password.
+      Rotate both every 90 days; SAM will send reminder e‑mails.
+
+--------------------------------------------------------------------
+6.  WHICH CREDENTIAL FOR WHICH TASK?
+--------------------------------------------------------------------
+• Search notices, pull IVL roster (no contact e‑mails) ...... Personal key
+• Download nightly Entity Registration Public V2 extract .... Personal key
+• Pull IVL roster WITH e‑mail & phone ........................ System Account
+• Shared application credential or >1,000 calls/day quota ... System Account
+
+--------------------------------------------------------------------
+END OF QUICK‑START

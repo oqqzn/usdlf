@@ -1,0 +1,17 @@
+__pycache__/
+*.py[co]
+*.png
+*.jpg
+.env
+private/
+
+# 1) Entity extract raw & processed files (huge binaries)
+data/entity/**/*.dat
+data/entity/**/*.zip
+data/entity/**/*.xlsx  # formatted_entities_*.xlsx
+
+# 2) Harvest run outputs that are big
+data/harvests/**/*.dat
+data/harvests/**/*.zip
+data/harvests/**/*.xlsx
+# data/harvests/**/*.csv
