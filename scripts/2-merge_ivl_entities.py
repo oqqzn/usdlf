@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 """
-2-merge_ivl_entities.py
-───────────────────────
 Find the newest IVL harvest run under   data/harvests/*/*_harvest/   (or a
 specific one supplied via --harvest) and merge it with the newest formatted
 SAM entity sheet found under   data/entity/*/formatted_entities_*.xlsx   to
@@ -135,7 +133,7 @@ if "Has Email" in final.columns:
 
 # ───────── Save ─────────
 final.to_excel(OUT_XLSX, index=False)
-print("✓ Curated list saved →", OUT_XLSX.relative_to(ROOT_DIR))
+print("Curated list saved →", OUT_XLSX.relative_to(ROOT_DIR))
 if "Has Email" in final.columns:
     print(
         "Total rows:", len(final), "| With e-mail:", (final["Has Email"] == "Yes").sum()

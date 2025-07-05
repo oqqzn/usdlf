@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 """
-1-dod_ivl_harvester.py
-──────────────────────
 Harvest DoD presolicitation (PTYPE="p") or sources‑sought (PTYPE="r") notices
 from SAM.gov and dump IVL rosters to    data/harvests/<YYYYMM>/<run-tag>_harvest/
 
@@ -14,6 +12,7 @@ from __future__ import annotations
 from dotenv import load_dotenv
 
 load_dotenv()
+import csv
 import datetime as dt
 import json
 import os
@@ -32,7 +31,7 @@ HARVEST_ROOT = DATA_DIR / "harvests"
 API_KEY = os.getenv("SAM_API_KEY")
 LOOKBACK_DAYS = 90
 ORG_CODE = "097"  # DoD
-PTYPE = "p"  # "p"=Presolicitation, "r"=Sources Sought
+PTYPE = "p"  # "p"=Presolicitation
 PAGE_SIZE = 1_000
 SLEEP_BETWEEN_IVL = 0.2
 # ─────────────────────────
@@ -54,7 +53,6 @@ FN_JSON = RUN_DIR / "harvest_summary.json"
 print("Output folder:", RUN_DIR.relative_to(ROOT_DIR))
 
 # ───────── CSV helpers ─────────
-import csv
 
 
 def csv_writer(path: Path, header: List[str]):
@@ -106,11 +104,11 @@ while True:
     api_calls += 1
 
     if resp.status_code == 429:
-        print("  ⏹  Daily quota hit (search). Stopping.")
+        print("Daily quota hit (search). Stopping.")
         rate_limit_hit = True
         break
     if not resp.ok:
-        print("  ❌  Search failed (status", resp.status_code, ") — aborting.")
+        print("Search failed (status", resp.status_code, ") — aborting.")
         break
 
     notices = resp.json().get("opportunitiesData", [])
@@ -127,7 +125,7 @@ while True:
         api_calls += 1
 
         if ivl_resp.status_code == 429:
-            print("  ⏹  Daily quota hit (IVL). Stopping.")
+            print("Daily quota hit (IVL). Stopping.")
             rate_limit_hit = True
             break
 
@@ -162,4 +160,4 @@ meta = {
     "quota_hit": rate_limit_hit,
 }
 FN_JSON.write_text(json.dumps(meta, indent=2), encoding="utf-8")
-print("✓ Harvest complete —", meta)
+print("Harvest complete —", meta)

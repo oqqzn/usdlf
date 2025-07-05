@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 """
-0-format_sam_data.py
-────────────────────
 Locate the newest monthly SAM public extract in   data/entity/<YYYYMM>/  ,
 unzip it if necessary, and produce  formatted_entities_<YYYYMMDD>.xlsx  in
 that same folder.
@@ -67,7 +65,7 @@ print("Formatted Excel will be:", OUTPUT_FILE.relative_to(ROOT_DIR))
 # ───────── Increase CSV field limit ─────────
 csv.field_size_limit(sys.maxsize)
 
-# ───────── Helpers (phone/email/validation) — unchanged logic ─────────
+# ───────── Helpers (phone/email/validation) ─────────
 US_AREA_CODES = {
     "907",
     "205",
@@ -379,7 +377,7 @@ def extract_emails_from_row(row):
     return list(dict.fromkeys(emails))
 
 
-# Column map (unchanged)
+# Column map
 COLUMN_MAPPINGS = {
     0: "UEI",
     3: "CAGE_CODE",

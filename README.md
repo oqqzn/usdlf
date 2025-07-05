@@ -55,7 +55,7 @@ Important columns: UEI, CAGE, Status, Has Email, Email Addresses, Has Phone, 
 | **PTYPE**    | `p` (Presolicitation) – switch to `r` as needed |
 | **Look‑back**| 90 days                                         |
 | **Org code** | `097` (DoD)                                     |
-| **API key**  | env var `SAM_API_KEY` or hard‑code               |
+| **API key**  | .env `SAM_API_KEY`               |
 
 Each run writes to:
 ```
@@ -93,6 +93,7 @@ Notice ID · Notice Title · Posted Date · Vendor Name · UEI · CAGE · Legal 
 * **Multiple harvests per day** – each run has its own timestamped folder; merge script always finds the latest.
 * **Quota** – daily SAM API limit is 1 000 calls; the harvester exits on 429 and you can resume next day.
 * **Email first** – curated workbook is sorted with `Has Email == "Yes"` at the top for quick outreach.
+* **Curated excels** - take roughly 5 minutes for creation
 
 ---
 © 2025  Internal tooling documentation

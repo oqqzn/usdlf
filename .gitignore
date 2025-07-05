@@ -3,15 +3,20 @@ __pycache__/
 *.png
 *.jpg
 .env
+
+# Internal Notes
 private/
+
+# Office/LibreOffice lock files
+.~lock.*#
 
 # 1) Entity extract raw & processed files (huge binaries)
 data/entity/**/*.dat
 data/entity/**/*.zip
-data/entity/**/*.xlsx  # formatted_entities_*.xlsx
+data/entity/**/*.xlsx
 
 # 2) Harvest run outputs that are big
 data/harvests/**/*.dat
 data/harvests/**/*.zip
 data/harvests/**/*.xlsx
-# data/harvests/**/*.csv
+data/harvests/**/*.csv
