@@ -3,6 +3,7 @@ __pycache__/
 *.png
 *.jpg
 .env
+.venv
 
 # Internal Notes
 private/
@@ -20,3 +21,4 @@ data/harvests/**/*.dat
 data/harvests/**/*.zip
 data/harvests/**/*.xlsx
 data/harvests/**/*.csv
+.DS_Store
